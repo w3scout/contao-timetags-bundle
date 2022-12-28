@@ -1,0 +1,51 @@
+{
+  "name": "w3scout/contao-timetags-bundle",
+  "description": "Timetags für Contao",
+  "keywords": [
+    "contao",
+    "contao4",
+    "contao-bundle",
+    "timetags"
+  ],
+  "version": "1.0.1",
+  "type": "contao-bundle",
+  "license": "LGPL-3.0+",
+  "authors": [
+    {
+      "name": "Martin Kozianka 2011-2017",
+      "homepage": "https://kozianka.de/",
+      "role": "Developer"
+    },
+    {
+      "name": "Darko Selesi",
+      "homepage": "https://w3scouts.com",
+      "role": "Developer"
+    },
+  ],
+  "require": {
+    "php": ">=7.4.0",
+    "contao/core-bundle": "^4.9"
+  },
+  "require-dev": {
+    "contao/manager-plugin": "^2.0"
+  },
+  "conflict": {
+    "contao/manager-plugin": "<2.0 || >=3.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "W3Scout\\TimetagsBundle\\": "src/"
+    },
+    "classmap": [
+      "src/Resources/contao/"
+    ],
+    "exclude-from-classmap": [
+      "src/Resources/contao/config/",
+      "src/Resources/contao/dca/",
+      "src/Resources/contao/languages/"
+    ]
+  },
+  "extra": {
+    "contao-manager-plugin": "W3Scout\\TimetagsBundle\\ContaoManager\\Plugin"
+  }
+}
