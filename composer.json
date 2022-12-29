@@ -20,7 +20,7 @@
       "name": "Darko Selesi",
       "homepage": "https://w3scouts.com",
       "role": "Developer"
-    },
+    }
   ],
   "require": {
     "php": ">=7.4.0",
