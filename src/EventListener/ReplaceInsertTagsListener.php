@@ -1,29 +1,15 @@
 <?php
 
-/**
- * Contao Open Source CMS
- * Copyright (C) 2005-2017 Leo Feyer
- *
- *
- * PHP version 5
- * @copyright  Martin Kozianka 2011-2017
- * @author     Martin Kozianka <http://kozianka.de/>
- * @package    timetags
- * @license    LGPL
- * @filesource
- *
- */
+namespace W3Scout\ContaoTimetagsBundle\EventListener;
 
-namespace W3scout\Timetags;
+use Contao\CoreBundle\DependencyInjection\Attribute\AsHook;
+use Contao\StringUtil;
+use Contao\Date;
+use DateTime;
 
-/**
- * Class Timetags
- *
- * @copyright  Martin Kozianka 2011-2017
- * @author     Martin Kozianka <http://kozianka.de>
- * @package    timetags
- */
-class Timetags extends \Frontend {
+#[AsHook('replaceInsertTags')]
+class ReplaceInsertTagsListener
+{
     public static $oneDay  = 86400;
     public static $oneHour =  3600;
     public static $oneMin  =    60;
@@ -32,12 +18,22 @@ class Timetags extends \Frontend {
     private $fmtString     = null;
     private $message       = "";
 
-    public function replaceTags($strTag) {
+    public function __invoke(
+        string $insertTag,
+        bool   $useCache,
+        string $cachedValue,
+        array  $flags,
+        array  $tags,
+        array  $cache,
+        int    $_rit,
+        int    $_cnt
+    )
+    {
+        #dump("ReplaceInsertTagsListener", $useCache, $flags, $tags, $_rit, $_cnt);exit;
 
-        $this->loadLanguageFile('timetags');
-
-        $tagValues     = trimsplit('::', $strTag);
-        $this->date    = new \Date();
+        $tagValues     = StringUtil::trimsplit('::', $insertTag);
+        $tagValues     = StringUtil::trimsplit('::', $insertTag);
+        $this->date    = new Date();
         $this->tagname = $tagValues[0];
 
         if (
@@ -74,12 +70,12 @@ class Timetags extends \Frontend {
             $timeStr = trim($tagValues[1]);
 
             if (strpos($timeStr, "tstamp=") !== false) {
-                $this->date = new \Date(str_replace("tstamp=", "", $timeStr));
+                $this->date = new Date(str_replace("tstamp=", "", $timeStr));
             } else {
                 // Datum parsen
                 try {
-                    $dt = new \DateTime($timeStr);
-                    $this->date = new \Date($dt->format('U'));
+                    $dt = new DateTime($timeStr);
+                    $this->date = new Date($dt->format('U'));
                 } catch (\Exception $e) {
                     return "[[".$strTag."]] - Error parsing date";
                 }
@@ -103,7 +99,7 @@ class Timetags extends \Frontend {
 
         $diff = $this->date->timestamp - time();
 
-        if ($diff <= (Timetags::$oneDay *-1)) {
+        if ($diff <= (ReplaceInsertTagsListener::$oneDay *-1)) {
             return $this->message_over;
         }
         else if ($diff <= 0) {
@@ -111,8 +107,8 @@ class Timetags extends \Frontend {
         }
 
         // Tage
-        if ($diff > Timetags::$oneDay) {
-            $days = floor($diff / Timetags::$oneDay) + 1;
+        if ($diff > ReplaceInsertTagsListener::$oneDay) {
+            $days = floor($diff / ReplaceInsertTagsListener::$oneDay) + 1;
         }
         else {
             $days = 1;
@@ -139,21 +135,21 @@ class Timetags extends \Frontend {
         $cd->sec   = 0;
 
         // Tage
-        if ($diff > Timetags::$oneDay) {
-            $cd->days = floor($diff / Timetags::$oneDay);
-            $diff = $diff % Timetags::$oneDay;
+        if ($diff > ReplaceInsertTagsListener::$oneDay) {
+            $cd->days = floor($diff / ReplaceInsertTagsListener::$oneDay);
+            $diff = $diff % ReplaceInsertTagsListener::$oneDay;
         }
 
         // Stunden
-        if ($diff > Timetags::$oneHour) {
-            $cd->hours = floor($diff / Timetags::$oneHour);
-            $diff = $diff % Timetags::$oneHour;
+        if ($diff > ReplaceInsertTagsListener::$oneHour) {
+            $cd->hours = floor($diff / ReplaceInsertTagsListener::$oneHour);
+            $diff = $diff % ReplaceInsertTagsListener::$oneHour;
         }
 
         // Minuten und Sekunden
-        if ($diff > Timetags::$oneMin) {
-            $cd->min = floor($diff / Timetags::$oneMin);
-            $cd->sec = $diff % Timetags::$oneMin;
+        if ($diff > ReplaceInsertTagsListener::$oneMin) {
+            $cd->min = floor($diff / ReplaceInsertTagsListener::$oneMin);
+            $cd->sec = $diff % ReplaceInsertTagsListener::$oneMin;
         }
 
         $lang   = &$GLOBALS['TL_LANG']['FMD']['timetags_countdown'];

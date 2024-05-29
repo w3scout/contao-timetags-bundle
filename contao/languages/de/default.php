@@ -9,10 +9,9 @@
  * @copyright  Martin Kozianka 2011-2017
  * @author     Martin Kozianka <http://kozianka.de/>
  * @package    timetags
- * @license    LGPL 
+ * @license    LGPL
  * @filesource
  */
-
 
 $GLOBALS['TL_LANG']['FMD']['timetags_timesince_format']     = "[vor %s]:";
 $GLOBALS['TL_LANG']['FMD']['timetags_timesince']            = ["Sekunde", "Minute", "Stunde", "Tag", "Woche", "Monat", "Jahr", "Jahrzehnt"];
