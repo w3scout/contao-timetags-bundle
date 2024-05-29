@@ -3,7 +3,7 @@ name: Bug report
 about: Create a report to help us improve the bundle
 title: '[BUG] '
 labels: bug
-assignees: cgoIT
+assignees: w3scout
 ---
 
 **To Reproduce**

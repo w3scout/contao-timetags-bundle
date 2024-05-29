@@ -3,7 +3,7 @@ name: Question or other request
 about: Any request that does not concern a bug
 title: '[OTHER] '
 labels:
-assignees: cgoIT
+assignees: w3scout
 ---
 
 **Describe the solution you'd like**

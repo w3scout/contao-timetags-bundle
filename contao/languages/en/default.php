@@ -13,7 +13,6 @@
  * @filesource
  */
 
-
 $GLOBALS['TL_LANG']['FMD']['timetags_timesince_format']     = "[before %s]:";
 $GLOBALS['TL_LANG']['FMD']['timetags_timesince']            = ["Second", "Minute", "Hour", "Day", "Week", "Month", "Year", "Decade"];
 $GLOBALS['TL_LANG']['FMD']['timetags_timesince_plural']     = ["Seconds", "Minutes", "Hours", "Days", "Weeks", "Month", "Years", "Decades"];
