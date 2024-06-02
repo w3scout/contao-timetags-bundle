@@ -6,7 +6,7 @@
 ```
 {{timesince::DATE::MESSAGE::MESSAGE}}
 e.g. {{timesince::08.01.2023::Sunday, 08.01.23 has been over since %s::Sunday, 08.01.23 is not yet}}
-e.g. {{timesince::08.01.2023::Sunday, 08.01.27 has been over since %s::Sunday, 08.01.27 is not yet}}
+e.g. {{timesince::08.01.2027::Sunday, 08.01.27 has been over since %s::Sunday, 08.01.27 is not yet}}
 ```
 **Countdown:**
 ```
