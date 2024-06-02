@@ -4,7 +4,11 @@
     "keywords": [
         "contao",
         "contao-bundle",
-        "timetags"
+        "inserttags",
+        "timetags",
+        "date",
+        "time",
+        "countdown"
     ],
     "type": "contao-bundle",
     "license": "LGPL-3.0+",
