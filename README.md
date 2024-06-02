@@ -11,8 +11,8 @@ e.g. {{timesince::08.01.2027::Sunday, 08.01.27 has been over since %s::Sunday, 0
 **Countdown:**
 ```
 {{countdown::DATE::MESSAGE::MESSAGE}}
-e.g. {{countdown::18.01.2023::Still %s until Sunday, 08.01.23::Sunday, 08.01.23 is over}}
-e.g. {{countdown::18.01.2027::Still %s until Sunday, 08.01.27::Sunday, 08.01.23 is over}}
+e.g. {{countdown::08.01.2023::Still %s until Sunday, 08.01.23::Sunday, 08.01.23 is over}}
+e.g. {{countdown::08.01.2027::Still %s until Sunday, 08.01.27::Sunday, 08.01.27 is over}}
 ```
 **Countdown Day:**
 ```
