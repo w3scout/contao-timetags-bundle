@@ -29,9 +29,7 @@ class ReplaceInsertTagsListener
         int    $_cnt
     )
     {
-        #dump("ReplaceInsertTagsListener", $useCache, $flags, $tags, $_rit, $_cnt);exit;
 
-        $tagValues     = StringUtil::trimsplit('::', $insertTag);
         $tagValues     = StringUtil::trimsplit('::', $insertTag);
         $this->date    = new Date();
         $this->tagname = $tagValues[0];
